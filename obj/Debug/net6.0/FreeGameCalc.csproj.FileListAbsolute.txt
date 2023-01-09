@@ -1,0 +1,5 @@
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\FreeGameCalc.csproj.AssemblyReference.cache
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\FreeGameCalc.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\FreeGameCalc.AssemblyInfoInputs.cache
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\FreeGameCalc.AssemblyInfo.cs
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\FreeGameCalc.csproj.CoreCompileInputs.cache
