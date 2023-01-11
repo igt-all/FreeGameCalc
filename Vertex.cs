@@ -1,46 +1,29 @@
 namespace MarkovLibraryCSharp
 {
-    public class Vertex : IVertex
+    public class Vertex : AVertex
     {
-        private Arc<Vertex> _ArcType;
-        public List<Arc<Vertex>> _neighborhood = new();
+        //public List<Arc> _neighborhood;
 
         public Vertex(double probability, double pay)
         {
-            _probability = probability;
-            _pay = pay;
-            _tempProbability = 0;
+            Probability = probability;
+            Pay = pay;
+            TempProbability = 0;
+            Neighborhood = new List<AArc>();
         }
-
-        public double _tempProbability { get; set; }
-        public double _probability { get; set; }
-
-        public double _pay { get; set; }
 
         //Add an arc to the neighborhood vector
-        public void addArcToNeighborhood<_VertexType>(_VertexType neighbor, double probability, double pay = 0)
+        public override void AddArcToNeighborhood(AVertex neighbor, double probability, double pay = 0)
         {
-            _neighborhood.Add(new Arc<_VertexType>(neighbor, probability));
-        }
-
-        //Set the pay value
-        public void setPay(double pay)
-        {
-            _pay = pay;
-        }
-
-        //Get the pay value
-        public double getPay()
-        {
-            return _pay;
+            Neighborhood.Add(new Arc(neighbor, probability));
         }
 
         //reset all values to 0
-        public void reset()
+        public override void Reset()
         {
-            _probability = 0;
-            _tempProbability = 0;
-            _pay = 0.0;
+            Probability = 0;
+            TempProbability = 0;
+            Pay = 0.0;
         }
     }
 }

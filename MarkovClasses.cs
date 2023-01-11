@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using static MarkovLibraryCSharp.MarkovFunctors.MarkovFunctors;
+﻿using _ArcType = MarkovLibraryCSharp.ArcPay;
 
 namespace MarkovLibraryCSharp
 {
-
     //	public class TransitionGraphPlus<_NameType> : BaseGraph<_NameType, double, VertexAP>
     //	{
     //		private void markovProbabilityIteration()
     //		{
-    //			std::for_each(_vertexSet.begin(), _vertexSet.end(), MarkovFunctors.ProbInnerProduct<VertexSet_Type.value_type, MarkovFunctors.ArcTimesProb<PayArc<VertexAP>>>());
+    //			std::for_each(_vertexSet.begin(), _vertexSet.end(), MarkovFunctors.ProbInnerProduct<VertexSet_Type.value_type, MarkovFunctors.ArcTimesProb<ArcPay<VertexAP>>>());
     //		}
     //		private void markovPayIteration()
     //		{
@@ -69,20 +62,20 @@ namespace MarkovLibraryCSharp
     //			//objects
     //			VertexSet_Type.iterator vertexItr = new VertexSet_Type.iterator();
     //			VertexSet_Type.iterator endVertex = _vertexSet.end();
-    //			List<PayArc<VertexAP>>.Enumerator curArc1;
-    //			List<PayArc<VertexAP>>.Enumerator curArc2;
-    //			List<PayArc<VertexAP>>.Enumerator endArc;
-    //			List<PayArc<VertexAP>> tempVec = new List<PayArc<VertexAP>>();
+    //			List<ArcPay<VertexAP>>.Enumerator curArc1;
+    //			List<ArcPay<VertexAP>>.Enumerator curArc2;
+    //			List<ArcPay<VertexAP>>.Enumerator endArc;
+    //			List<ArcPay<VertexAP>> tempVec = new List<ArcPay<VertexAP>>();
     //			double tempPay;
     //			double tempProb;
     //			VertexAP tempNeighbor; //create tempNeighborhood
-    //			MarkovFunctors.ClearNeighborhood<VertexSet_Type.value_type, PayArc<VertexAP>> CNF = new MarkovFunctors.ClearNeighborhood<VertexSet_Type.value_type, PayArc<VertexAP>>();
+    //			MarkovFunctors.ClearNeighborhood<VertexSet_Type.value_type, ArcPay<VertexAP>> CNF = new MarkovFunctors.ClearNeighborhood<VertexSet_Type.value_type, ArcPay<VertexAP>>();
 
     //			//algorithm
     //			for (vertexItr = _vertexSet.begin(); vertexItr != endVertex; ++vertexItr)
     //			{
     //				//sort neighborhood by neighbor
-    //				sort(vertexItr._neighborhood.begin(), vertexItr._neighborhood.end(), MarkovFunctors.SortArcByNeighbor<PayArc<VertexAP>>());
+    //				sort(vertexItr._neighborhood.begin(), vertexItr._neighborhood.end(), MarkovFunctors.SortArcByNeighbor<ArcPay<VertexAP>>());
     //				curArc1 = curArc2 = vertexItr._neighborhood.begin();
     //				//C++ TO C# CONVERTER TODO TASK: The following line was determined to be a copy assignment (rather than a reference assignment) - this should be verified and a 'CopyFrom' method should be created:
     //				//ORIGINAL LINE: endArc = (*vertexItr)->_neighborhood.end();
@@ -110,7 +103,7 @@ namespace MarkovLibraryCSharp
     //						++curArc1;
     //					}
     //					//add new arc with pa = tempProb and xa = tempPay/tempProb
-    //					tempVec.Add(new PayArc<VertexAP>(tempNeighbor, tempProb, (tempPay / tempProb)));
+    //					tempVec.Add(new ArcPay<VertexAP>(tempNeighbor, tempProb, (tempPay / tempProb)));
     //				}
     //				CNF(*vertexItr); //delete all old arcs
     //								 //set neighborhood to tempNeighborhood
@@ -119,12 +112,12 @@ namespace MarkovLibraryCSharp
     //		}
     //	}
 
-    //	public class OptimizationGraph<_NameType, double> : BaseGraph<_NameType, double, StrategyVertex>
+    //	public class OptimizationGraph<_NameType, double> : BaseGraph<_NameType, double, StrategyAVertex>
     //	{
     //		private void optimizationIteration()
     //		{
     //			foreach ()
-    //				foreach (_vertexSet.begin(), _vertexSet.end(), MarkovFunctors.PayInnerProduct<VertexSet_Type.value_type, MarkovFunctors.ArcTimesPay<StrategyVertex.Arc<Vertex>>>());
+    //				foreach (_vertexSet.begin(), _vertexSet.end(), MarkovFunctors.PayInnerProduct<VertexSet_Type.value_type, MarkovFunctors.ArcTimesPay<StrategyAVertex.Arc<AVertex>>>());
     //		}
     //		private void updatePays()
     //		{
@@ -181,225 +174,225 @@ namespace MarkovLibraryCSharp
     //			}
     //		}
     //	}
-    namespace MarkovFunctors
-    {
-        static class MarkovFunctors<_VertexType> where _VertexType : IVertex 
-        { 
-            ////////////////////////////////////////
-            //Functor for sorting arcs by neighbor 
+    //   namespace MarkovFunctors
+    //   {
+    //       static class MarkovFunctors<_VertexType> where _VertexType : AVertex 
+    //       { 
+    //           ////////////////////////////////////////
+    //           //Functor for sorting arcs by neighbor 
 
-            //public class SortArcByNeighbor<_ArcType> where _ArcType : IArc<_VertexType> 
-            //{
+    //           //public class SortArcByNeighbor<_ArcType> where _ArcType : IArc<_VertexType> 
+    //           //{
 
-            //    //public static result_type functorMethod(first_argument_type left, second_argument_type right)
-            //    //{
-            //    //    return (left._neighbor < right._neighbor);
-            //    //}
-            //}
-            ///////////////////////////////////////////////////////////////
-            ///Specialized Inner Product Function Objects
-            //////////////////////////////////////////////////////////////
-            //public delegate double ProbInnerProduct<_VertexType, delegate> (_VertexType vertex, ArcTimesProb func1);
-        
-            public static double ProbInnerProductMethod<_VertexType, internal static double ArcTimesProb(_VertexType vertexType, Func func)
-            {
-	            double temp = 0;
-	            return vertex._tempProbability += ArcTimesProb(temp, itr);
-            }
+    //           //    //public static result_type functorMethod(first_argument_type left, second_argument_type right)
+    //           //    //{
+    //           //    //    return (left._neighbor < right._neighbor);
+    //           //    //}
+    //           //}
+    //           ///////////////////////////////////////////////////////////////
+    //           ///Specialized Inner Product Function Objects
+    //           //////////////////////////////////////////////////////////////
+    //           //public delegate double ProbInnerProduct<_VertexType, delegate> (_VertexType vertex, ArcTimesProb func1);
 
-            //public class ProbInnerProduct<_Ty, _Functor> : std::unary_function<_Ty, void>
-            //{
-            //    public static result_type functorMethod(argument_type itr)
-            //    {
-            //        double temp = 0;
-            //        itr._tempProbability = std::accumulate(itr._neighborhood.begin(), itr._neighborhood.end(), temp, default(_Functor));
-            //    }
-            //}
+    //           public static double ProbInnerProductMethod<_VertexType, internal static double ArcTimesProb(_VertexType vertexType, Func func)
+    //           {
+    //            double temp = 0;
+    //            return vertex._tempProbability += ArcTimesProb(temp, itr);
+    //           }
 
-            public class PassProbInnerProduct<_Ty, _Functor, _argTy> 
-            {
-                //private _argTy _arg = new _argTy();
-                //public PassProbInnerProduct(_argTy arg)
-                //{
-                //    _arg = arg;
-                //}
-                //public static result_type functorMethod(argument_type itr)
-                //{
-                //    double temp = 0;
-                //    itr._tempProbability = std::accumulate(itr._neighborhood.begin(), itr._neighborhood.end(), temp, _Functor(_arg));
-                //}
-            }
-            
-            public class PayInnerProduct<_Ty, _Functor> 
-            {
-                //public static result_type functorMethod(argument_type itr)
-                //{
-                //    double temp = 0;
-                //    itr._tempPay = std::accumulate(itr._neighborhood.begin(), itr._neighborhood.end(), temp, default(_Functor));
-                //}
-            }
+    //           //public class ProbInnerProduct<_Ty, _Functor> : std::unary_function<_Ty, void>
+    //           //{
+    //           //    public static result_type functorMethod(argument_type itr)
+    //           //    {
+    //           //        double temp = 0;
+    //           //        itr._tempProbability = std::accumulate(itr._neighborhood.begin(), itr._neighborhood.end(), temp, default(_Functor));
+    //           //    }
+    //           //}
 
-            ////////////////////////////////////////////////
-            //Functors for Inner Products
-            //////////////////////////////////////////////
+    //           public class PassProbInnerProduct<_Ty, _Functor, _argTy> 
+    //           {
+    //               //private _argTy _arg = new _argTy();
+    //               //public PassProbInnerProduct(_argTy arg)
+    //               //{
+    //               //    _arg = arg;
+    //               //}
+    //               //public static result_type functorMethod(argument_type itr)
+    //               //{
+    //               //    double temp = 0;
+    //               //    itr._tempProbability = std::accumulate(itr._neighborhood.begin(), itr._neighborhood.end(), temp, _Functor(_arg));
+    //               //}
+    //           }
 
-            //public delegate double ArcTimesProb(double tempProb, IArc<_VertexType> arc);
+    //           public class PayInnerProduct<_Ty, _Functor> 
+    //           {
+    //               //public static result_type functorMethod(argument_type itr)
+    //               //{
+    //               //    double temp = 0;
+    //               //    itr._tempPay = std::accumulate(itr._neighborhood.begin(), itr._neighborhood.end(), temp, default(_Functor));
+    //               //}
+    //           }
 
-            public static double ArcTimesProb<_VertexType>(double tempProb, IArc<_VertexType> arc) where _VertexType : IVertex
-            {
-	            return tempProb + (arc._probability * arc._neighbor._probability);
-            }
-            //public class ArcTimesProb<Arc<IVertex>> : std::binary_function<double, Arc<Vertex>*, double> // Binary function provides these types <first_argument_type,second_argument_type,result_type>
-            //{
-            //		//C++ TO C# CONVERTER WARNING: 'const' methods are not available in C#:
-            //		//ORIGINAL LINE: result_type operator ()(const first_argument_type& tempProb, const second_argument_type& arc) const
-            //	public static result_type functorMethod(first_argument_type tempProb, second_argument_type arc)
-            //    {
-            //	    return tempProb + (arc._probability * arc._neighbor._probability);
-            //    }
-            //   }
-            //Arcs that pay model 
-            //public class ArcExp : std::binary_function<double, PayArc<VertexAP>*, double>
-            //{
-	           // public static result_type functorMethod(first_argument_type tempPay, second_argument_type arc)
-	           // {
-		          //  return tempPay + (arc._probability * ((arc._neighbor._pay) + (arc._neighbor._probability) * (arc._pay))); //calc
-	           // }
-            //}
-        //Traditional dot product on pay
-        //public class ArcTimesPay<Arc<Vertex>> : std::binary_function<double, Arc<Vertex>*, double>
-		      //  {
-	       // //C++ TO C# CONVERTER WARNING: 'const' methods are not available in C#:
-	       // //ORIGINAL LINE: result_type operator ()(const first_argument_type& tempPay, const second_argument_type& arc) const
-	       // public static result_type functorMethod(first_argument_type tempPay, second_argument_type arc)
-	       // {
-		      //  return (tempPay + arc._probability * arc._neighbor._pay); //value of moving ahead
-	       // }
-        //}
+    //           ////////////////////////////////////////////////
+    //           //Functors for Inner Products
+    //           //////////////////////////////////////////////
 
-            //traditional dot product excluding any vertex with a given pay
-      //      public class ExcludeTimes<Arc<Vertex>, double > : std::binary_function<double, Arc<Vertex>*, double>
-		    //{
-			   // private double _excludePay = new double();
-			   // public ExcludeTimes(double pay)
-			   // {
-				  //  _excludePay = pay;
-			   // }
-			   // //C++ TO C# CONVERTER WARNING: 'const' methods are not available in C#:
-			   // //ORIGINAL LINE: result_type operator ()(const first_argument_type& tempProb, const second_argument_type& arc) const
-			   // public static result_type functorMethod(first_argument_type tempProb, second_argument_type arc)
-			   // {
-				  //  return ((arc._neighbor._pay != _excludePay) ? (tempProb + (arc._probability * arc._neighbor._probability)) : (tempProb));
-			   // }
+    //           //public delegate double ArcTimesProb(double tempProb, IArc<_VertexType> arc);
 
-        //}
-		    ////////////////////////////////////////
-		    //Update functions
-		    ////////////////////////////////////////
-	    //public class UpdateProbs<_Ty> : std::unary_function<_Ty, void>
-	    //{
-		   // public static result_type functorMethod(argument_type itr)
-		   // {
-			  //  itr._probability = itr._tempProbability;
-		   // }
-	    //}
+    //           public static double ArcTimesProb<_VertexType>(double tempProb, _ArcType arc) where _VertexType : AVertex
+    //           {
+    //            return tempProb + (arc._probability * arc._neighbor._probability);
+    //           }
+    //           //public class ArcTimesProb<Arc<AVertex>> : std::binary_function<double, Arc<AVertex>*, double> // Binary function provides these types <first_argument_type,second_argument_type,result_type>
+    //           //{
+    //           //		//C++ TO C# CONVERTER WARNING: 'const' methods are not available in C#:
+    //           //		//ORIGINAL LINE: result_type operator ()(const first_argument_type& tempProb, const second_argument_type& arc) const
+    //           //	public static result_type functorMethod(first_argument_type tempProb, second_argument_type arc)
+    //           //    {
+    //           //	    return tempProb + (arc._probability * arc._neighbor._probability);
+    //           //    }
+    //           //   }
+    //           //Arcs that pay model 
+    //           //public class ArcExp : std::binary_function<double, ArcPay<VertexAP>*, double>
+    //           //{
+    //           // public static result_type functorMethod(first_argument_type tempPay, second_argument_type arc)
+    //           // {
+    //	          //  return tempPay + (arc._probability * ((arc._neighbor._pay) + (arc._neighbor._probability) * (arc._pay))); //calc
+    //           // }
+    //           //}
+    //       //Traditional dot product on pay
+    //       //public class ArcTimesPay<Arc<AVertex>> : std::binary_function<double, Arc<AVertex>*, double>
+    //	      //  {
+    //       // //C++ TO C# CONVERTER WARNING: 'const' methods are not available in C#:
+    //       // //ORIGINAL LINE: result_type operator ()(const first_argument_type& tempPay, const second_argument_type& arc) const
+    //       // public static result_type functorMethod(first_argument_type tempPay, second_argument_type arc)
+    //       // {
+    //	      //  return (tempPay + arc._probability * arc._neighbor._pay); //value of moving ahead
+    //       // }
+    //       //}
 
-     //   public class UpdatePays<_Ty> : std::unary_function<_Ty, void>
-     //   {
-	    //    public static result_type functorMethod(argument_type itr)
-	    //    {
-		   //     itr._pay = itr._tempPay;
-	    //    }
-     //   }
-        //public class OptiPayUpdate<_Ty> : std::unary_function<_Ty, void>
-        //{
-	       // public static result_type functorMethod(argument_type itr)
-	       // {
-		      //  if (!(itr._pay > itr._tempPay)) //optimal to move forward, update _pay
-		      //  {
-			     //   itr._pay = itr._tempPay;
-			     //   itr._strategy = true;
-		      //  }
-		      //  else
-		      //  {
-			     //   itr._strategy = false;
-		      //  }
-	       // }
-        //}
-        ///////////////////////////////////////////////////////
-        ///Delete and reset functions
-        /////////////////////////////////////////////////////
-        //public class ClearNeighborhood<_Ty, Arc<Vertex>> : Func<_Ty, void>
-        //{
-	       // public static result_type functorMethod(argument_type itr)
-	       // {
-		      //  List<Arc<Vertex>>.Enumerator arcItr;
-		      //  List<Arc<Vertex>>.Enumerator end = itr._neighborhood.end();
-		      //  for (arcItr = itr._neighborhood.begin(); arcItr != end; ++arcItr)
-		      //  {
-			     //   //deallocate arc
-			     //   //C++ TO C# CONVERTER TODO TASK: Iterators are only converted within the context of 'while' and 'for' loops:
-			     //   arcItr = null;
-		      //  }
-		      //  //clear neighborhood vector
-		      //  itr._neighborhood.clear();
-	       // }
-        //}   
+    //           //traditional dot product excluding any vertex with a given pay
+    //     //      public class ExcludeTimes<Arc<AVertex>, double > : std::binary_function<double, Arc<AVertex>*, double>
+    //	    //{
+    //		   // private double _excludePay = new double();
+    //		   // public ExcludeTimes(double pay)
+    //		   // {
+    //			  //  _excludePay = pay;
+    //		   // }
+    //		   // //C++ TO C# CONVERTER WARNING: 'const' methods are not available in C#:
+    //		   // //ORIGINAL LINE: result_type operator ()(const first_argument_type& tempProb, const second_argument_type& arc) const
+    //		   // public static result_type functorMethod(first_argument_type tempProb, second_argument_type arc)
+    //		   // {
+    //			  //  return ((arc._neighbor._pay != _excludePay) ? (tempProb + (arc._probability * arc._neighbor._probability)) : (tempProb));
+    //		   // }
 
-        //static System.Action<_VertexType> ResetVertex<_Ty> ()
-        //{
-		      //  itr.reset();	
-        //}
+    //       //}
+    //	    ////////////////////////////////////////
+    //	    //Update functions
+    //	    ////////////////////////////////////////
+    //    //public class UpdateProbs<_Ty> : std::unary_function<_Ty, void>
+    //    //{
+    //	   // public static result_type functorMethod(argument_type itr)
+    //	   // {
+    //		  //  itr._probability = itr._tempProbability;
+    //	   // }
+    //    //}
 
-        ///////////////////////////////////////////////////////////////////
-        ////Calcualates _pay*_probability of a vertex and adds it to temp
-        //////////////////////////////////////////////////////////////////
-        //public class VertexPayback<_Ty> : std::binary_function<double, _Ty, double>
-        //{
-	       // //C++ TO C# CONVERTER WARNING: 'const' methods are not available in C#:
-	       // //ORIGINAL LINE: result_type operator ()(first_argument_type& temp, second_argument_type& itr) const
-	       // public static result_type functorMethod(first_argument_type temp, second_argument_type itr)
-	       // {
-		      //  return (temp + (double)(itr._pay) * itr._probability);
-	       // }
-        //}
-        //////////////////////////////////////////////////////////
-        /////For calculating max pay and max pay odds 
-        //////////////////////////////////////////////////////////
-        //public class FindVertexMaxPay<_Ty, double> : std::binary_function<double, _Ty, double>
-        //{
-        //    public static result_type functorMethod(first_argument_type curMax, second_argument_type itr)
-        //    {
-        //        return ((curMax < (itr.getPay())) ? itr.getPay() : curMax);
-        //    }
-        //}
-        //public class CollectLikeProbs<_Ty, double> 
-        //{
-	       // private double _payToFind = new double();
-	       // public CollectLikeProbs(double pay)
-	       // {
-		      //  _payToFind = pay;
-	       // }
-	       // public static result_type functorMethod(first_argument_type temp, second_argument_type itr)
-	       // {
-		      //  return temp + ((itr._probability > 0 && itr.getPay() == _payToFind) ? (itr._probability) : (0));
-	       // }
-        //}
+    //    //   public class UpdatePays<_Ty> : std::unary_function<_Ty, void>
+    //    //   {
+    //    //    public static result_type functorMethod(argument_type itr)
+    //    //    {
+    //	   //     itr._pay = itr._tempPay;
+    //    //    }
+    //    //   }
+    //       //public class OptiPayUpdate<_Ty> : std::unary_function<_Ty, void>
+    //       //{
+    //       // public static result_type functorMethod(argument_type itr)
+    //       // {
+    //	      //  if (!(itr._pay > itr._tempPay)) //optimal to move forward, update _pay
+    //	      //  {
+    //		     //   itr._pay = itr._tempPay;
+    //		     //   itr._strategy = true;
+    //	      //  }
+    //	      //  else
+    //	      //  {
+    //		     //   itr._strategy = false;
+    //	      //  }
+    //       // }
+    //       //}
+    //       ///////////////////////////////////////////////////////
+    //       ///Delete and reset functions
+    //       /////////////////////////////////////////////////////
+    //       //public class ClearNeighborhood<_Ty, Arc<AVertex>> : Func<_Ty, void>
+    //       //{
+    //       // public static result_type functorMethod(argument_type itr)
+    //       // {
+    //	      //  List<Arc<AVertex>>.Enumerator arcItr;
+    //	      //  List<Arc<AVertex>>.Enumerator end = itr._neighborhood.end();
+    //	      //  for (arcItr = itr._neighborhood.begin(); arcItr != end; ++arcItr)
+    //	      //  {
+    //		     //   //deallocate arc
+    //		     //   //C++ TO C# CONVERTER TODO TASK: Iterators are only converted within the context of 'while' and 'for' loops:
+    //		     //   arcItr = null;
+    //	      //  }
+    //	      //  //clear neighborhood vector
+    //	      //  itr._neighborhood.clear();
+    //       // }
+    //       //}   
 
-    //perform P=P+sum_{v in V(D) pv*p^0_v)
+    //       //static System.Action<_VertexType> ResetVertex<_Ty> ()
+    //       //{
+    //	      //  itr.reset();	
+    //       //}
 
-        //public class OptiProbSum<_Ty, _NameType, double> : Func<double, _Ty, double>
-        //{
-	       // private SortedDictionary<_NameType, double> _startingProbs = new SortedDictionary<_NameType, double>();
-	       // public OptiProbSum(SortedDictionary<_NameType, double> startingProbs)
-	       // {
-		      //  _startingProbs = new SortedDictionary<_NameType, double>(startingProbs);
-	       // }
-	       // public static result_type functorMethod(first_argument_type temp, second_argument_type itr)
-	       // {
-		      //  return (temp + (itr.second._probability * _startingProbs[itr.first]));
-	       // }
-        //}
-	}
-    }
+    //       ///////////////////////////////////////////////////////////////////
+    //       ////Calcualates _pay*_probability of a vertex and adds it to temp
+    //       //////////////////////////////////////////////////////////////////
+    //       //public class VertexPayback<_Ty> : std::binary_function<double, _Ty, double>
+    //       //{
+    //       // //C++ TO C# CONVERTER WARNING: 'const' methods are not available in C#:
+    //       // //ORIGINAL LINE: result_type operator ()(first_argument_type& temp, second_argument_type& itr) const
+    //       // public static result_type functorMethod(first_argument_type temp, second_argument_type itr)
+    //       // {
+    //	      //  return (temp + (double)(itr._pay) * itr._probability);
+    //       // }
+    //       //}
+    //       //////////////////////////////////////////////////////////
+    //       /////For calculating max pay and max pay odds 
+    //       //////////////////////////////////////////////////////////
+    //       //public class FindVertexMaxPay<_Ty, double> : std::binary_function<double, _Ty, double>
+    //       //{
+    //       //    public static result_type functorMethod(first_argument_type curMax, second_argument_type itr)
+    //       //    {
+    //       //        return ((curMax < (itr.getPay())) ? itr.getPay() : curMax);
+    //       //    }
+    //       //}
+    //       //public class CollectLikeProbs<_Ty, double> 
+    //       //{
+    //       // private double _payToFind = new double();
+    //       // public CollectLikeProbs(double pay)
+    //       // {
+    //	      //  _payToFind = pay;
+    //       // }
+    //       // public static result_type functorMethod(first_argument_type temp, second_argument_type itr)
+    //       // {
+    //	      //  return temp + ((itr._probability > 0 && itr.getPay() == _payToFind) ? (itr._probability) : (0));
+    //       // }
+    //       //}
+
+    //   //perform P=P+sum_{v in V(D) pv*p^0_v)
+
+    //       //public class OptiProbSum<_Ty, _NameType, double> : Func<double, _Ty, double>
+    //       //{
+    //       // private SortedDictionary<_NameType, double> _startingProbs = new SortedDictionary<_NameType, double>();
+    //       // public OptiProbSum(SortedDictionary<_NameType, double> startingProbs)
+    //       // {
+    //	      //  _startingProbs = new SortedDictionary<_NameType, double>(startingProbs);
+    //       // }
+    //       // public static result_type functorMethod(first_argument_type temp, second_argument_type itr)
+    //       // {
+    //	      //  return (temp + (itr.second._probability * _startingProbs[itr.first]));
+    //       // }
+    //       //}
+    //}
+    //   }
 }

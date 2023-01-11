@@ -1,27 +1,25 @@
 ﻿using System.Diagnostics;
-using MarkovLibraryCSharp.MarkovFunctors;
+using _ArcType = MarkovLibraryCSharp.ArcPay;
 
 namespace MarkovLibraryCSharp
 {
-    public class TransitionGraph<_NameType, _VertexType> : BaseGraph<_NameType, _VertexType> where _VertexType : IVertex
+    public class TransitionGraph<_NameType> : BaseGraph<_NameType> 
     {
         //one iteration of a Markov Chain
         private void markovProbabilityIteration()
         {
-            Func<_VertexType, _ArcType, double> arcTimesProbFunc = MarkovFunctors<_VertexType>.ArcTimesProb;
-            //MarkovFunctors<_VertexType>.ArcTimesProb<IArc<_VertexType>> arcTimesProbDel = new MarkovFunctors<_VertexType>.ArcTimesProb(MarkovFunctors<_VertexType>.ArcTimesProbMethod());
-            Func<_VertexType, Func<_VertexType>, double> probInnerProductDel = MarkovFunctors<_VertexType>.ProbInnerProductMethod;
+            //Func<_VertexType, _ArcType, double> arcTimesProbFunc = MarkovFunctors<_VertexType>.ArcTimesProb;
+            ////MarkovFunctors<_VertexType>.ArcTimesProb<IArc<_VertexType>> arcTimesProbDel = new MarkovFunctors<_VertexType>.ArcTimesProb(MarkovFunctors<_VertexType>.ArcTimesProbMethod());
+            //Func<_VertexType, Func<_VertexType>, double> probInnerProductDel = MarkovFunctors<_VertexType>.ProbInnerProductMethod;
 
             var tempProb = 0.0;
-            probInnerProductDel(_vertexSet, arcTimesProbDel<IArc<_VertexType>>(tempProb, _vertexSet));
-            _vertexSet.ForEach(probInnerProduct);
-            foreach (var vertex in _vertexSet)
-            {
-                //TODO: fix this
-                MarkovFunctors<_VertexType>.ProbInnerProduct();
-            }
+
+            _vertexSet.ForEach(v => v.TempProbability = v.Neighborhood.ForEach(a => a.Probability);
+
             //TODO: fix this
             //std::for_each(_vertexSet.begin(), _vertexSet.end(), MarkovFunctors.ProbInnerProduct<List<_VertexType>, MarkovFunctors.ArcTimesProb<Vertex.Arc<Vertex>>>());
+            //For each vertex, from beginning to end set probability in vertex to: for each Vertex neighbor the arc * neighbor arcs
+            //for each neighbor multiply the probabilities and set to vertex prob
         }
 
         //add an arc
@@ -30,7 +28,7 @@ namespace MarkovLibraryCSharp
 #if ARC_CHECK_ON
 			Debug.Assert(_vertexMap.find(tail) != _vertexMap.end() && _vertexMap.find(head) != _vertexMap.end());
 #endif
-            _vertexMap[head].addArcToNeighborhood(_vertexMap[tail], probability, 0);
+            _vertexMap[head].AddArcToNeighborhood(_vertexMap[tail], probability, 0);
         }
 
         //Performs one iteration of a standard Markov Chain

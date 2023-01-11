@@ -27,23 +27,21 @@
 namespace MarkovLibraryCSharp
 {
     //Arc class for use in constructing transition and optimization graphs 
-    public class Arc <_VertexType> where _VertexType : IVertex
-	{
-		public double _probability;
-		public _VertexType _neighbor;
-		//Constructor
-		public Arc(_VertexType neighbor, double probability =0)
-		{
-			//CHECK PROBABILITY IS >=0 and <=1
-			if (probability >= 0 && probability <= 1)
-			{
-				_probability = probability;
-				_neighbor = neighbor;
-			}
-			else
+    public class Arc : AArc
+    {
+        //Constructor
+        public Arc(AVertex? neighbor, double probability = 0)
+        {
+            //CHECK PROBABILITY IS >=0 and <=1
+            if (probability is >= 0 and <= 1)
             {
-				System.Console.WriteLine($"Probability not in range: {probability}");
+                Probability = probability;
+                Neighbor = neighbor;
             }
-		}
-	}
+            else
+            {
+                Console.WriteLine($"Probability not in range: {probability}");
+            }
+        }
+    }
 }
