@@ -3,23 +3,21 @@ using _ArcType = MarkovLibraryCSharp.ArcPay;
 
 namespace MarkovLibraryCSharp
 {
-    public class TransitionGraph<_NameType> : BaseGraph<_NameType> 
+    public class TransitionGraph<_NameType> : BaseGraph<_NameType>
     {
         //one iteration of a Markov Chain
         private void markovProbabilityIteration()
         {
-            //Func<_VertexType, _ArcType, double> arcTimesProbFunc = MarkovFunctors<_VertexType>.ArcTimesProb;
-            ////MarkovFunctors<_VertexType>.ArcTimesProb<IArc<_VertexType>> arcTimesProbDel = new MarkovFunctors<_VertexType>.ArcTimesProb(MarkovFunctors<_VertexType>.ArcTimesProbMethod());
-            //Func<_VertexType, Func<_VertexType>, double> probInnerProductDel = MarkovFunctors<_VertexType>.ProbInnerProductMethod;
-
             var tempProb = 0.0;
-
-            _vertexSet.ForEach(v => v.TempProbability = v.Neighborhood.ForEach(a => a.Probability);
-
-            //TODO: fix this
-            //std::for_each(_vertexSet.begin(), _vertexSet.end(), MarkovFunctors.ProbInnerProduct<List<_VertexType>, MarkovFunctors.ArcTimesProb<Vertex.Arc<Vertex>>>());
-            //For each vertex, from beginning to end set probability in vertex to: for each Vertex neighbor the arc * neighbor arcs
-            //for each neighbor multiply the probabilities and set to vertex prob
+            //For each vertex, from beginning to end set, tempprobability in vertex to: for each Vertex neighbor the arc prob * neighbor prob
+            //_vertexSet.ForEach(v => v.TempProbability= v.Neighborhood.Aggregate((n, a) => n.Neighbor.Probability * a.Probability));
+            foreach (var vertex in _vertexSet)
+            {
+                foreach (var neighborArc in vertex.Neighborhood)
+                {
+                    vertex.TempProbability += neighborArc.Probability * neighborArc.Neighbor.Probability;
+                }
+            }
         }
 
         //add an arc
@@ -36,6 +34,15 @@ namespace MarkovLibraryCSharp
         {
             markovProbabilityIteration();
             updateProbs();
+        }
+
+        public void addVertex(_NameType name, double probability = 0, double pay = 0)
+        {
+            Debug.Assert(probability is >= 0 and <= 1);
+
+            var vertex = new Vertex(probability, pay);
+            _vertexMap.TryAdd(name, vertex);
+            _vertexSet.Add(vertex);
         }
 
         //Performs numIterations iterations of a standard Markov Chain

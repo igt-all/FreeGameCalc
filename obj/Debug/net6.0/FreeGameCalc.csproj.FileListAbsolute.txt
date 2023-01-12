@@ -3,3 +3,13 @@ C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeG
 C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\FreeGameCalc.AssemblyInfoInputs.cache
 C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\FreeGameCalc.AssemblyInfo.cs
 C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\FreeGameCalc.csproj.CoreCompileInputs.cache
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\bin\Debug\net6.0\FreeGameCalc.exe
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\bin\Debug\net6.0\FreeGameCalc.deps.json
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\bin\Debug\net6.0\FreeGameCalc.runtimeconfig.json
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\bin\Debug\net6.0\FreeGameCalc.dll
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\bin\Debug\net6.0\FreeGameCalc.pdb
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\FreeGameCalc.dll
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\refint\FreeGameCalc.dll
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\FreeGameCalc.pdb
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\FreeGameCalc.genruntimeconfig.cache
+C:\Users\lbp31495\OneDrive - IGT PLC\Desktop\Work\CODE\MarkovLibraryCSharp\FreeGameCalc\obj\Debug\net6.0\ref\FreeGameCalc.dll

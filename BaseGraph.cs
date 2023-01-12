@@ -39,10 +39,7 @@ namespace MarkovLibraryCSharp
         //Add a vertex to the graph
         public void addVertex(_NameType name, double probability = 0, double pay = 0)
         {
-            Debug.Assert(probability is >= 0 and <= 1);
-            var vert = (AVertex)Activator.CreateInstance(typeof(AVertex), (probability, pay));
-            _vertexMap.TryAdd(name, vert);
-            _vertexSet.Add(vert);
+            Console.WriteLine("use inherited class");
         }
 
         //Set the probability of a vertex
