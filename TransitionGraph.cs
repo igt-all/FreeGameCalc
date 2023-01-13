@@ -8,15 +8,17 @@ namespace MarkovLibraryCSharp
         //one iteration of a Markov Chain
         private void markovProbabilityIteration()
         {
-            var tempProb = 0.0;
             //For each vertex, from beginning to end set, tempprobability in vertex to: for each Vertex neighbor the arc prob * neighbor prob
             //_vertexSet.ForEach(v => v.TempProbability= v.Neighborhood.Aggregate((n, a) => n.Neighbor.Probability * a.Probability));
             foreach (var vertex in _vertexSet)
             {
+                var tempProb = 0.0;
                 foreach (var neighborArc in vertex.Neighborhood)
                 {
-                    vertex.TempProbability += neighborArc.Probability * neighborArc.Neighbor.Probability;
+                    tempProb += neighborArc.Probability * neighborArc.Neighbor.Probability;
                 }
+
+                vertex.TempProbability = tempProb;
             }
         }
 

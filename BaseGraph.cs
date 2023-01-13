@@ -30,9 +30,9 @@ namespace MarkovLibraryCSharp
         //assign tempProbabilities to probabilities in any model
         protected void updateProbs()
         {
-            foreach (var i in _vertexSet)
+            foreach (var vertex in _vertexSet)
             {
-                //UpdateProbs<List<List<_VertexType>>::value_type>();
+                vertex.Probability = vertex.TempProbability;
             }
         }
 
@@ -70,38 +70,43 @@ namespace MarkovLibraryCSharp
         //Remove all Arcs from the graph 
         public void clearArcSet()
         {
-            //foreach (var vertex in _vertexSet)
-            //    ClearNeighborhood<List<_VertexType>, _VertexType.Arc<Vertex>>();
+            foreach (var vertex in _vertexSet)
+            {
+                vertex.Neighborhood.Clear(); //Clear the neighborhood
+            }
         }
 
         //Reset all vertex values
         public void resetVertexValues()
         {
-            //_vertexSet.ForEach(ResetVertex<List<_VertexType>>());
+            foreach (var vertex in _vertexSet)
+            {
+                vertex.Probability = 0;
+                vertex.TempProbability = 0;
+                vertex.TempProbability = 0;
+                vertex.Pay = 0;
+                vertex.TempPay = 0;
+            }
         }
 
         //print current graph probabilities 
-        public void printProbabilities(string firstSepr, string secondSepr)
+        public void printProbabilities(TextWriter writer, string firstSepr, string endSepr)
         {
-            //SortedDictionary<_NameType, _VertexType>.Enumerator vertItr;
-            //SortedDictionary<_NameType, _VertexType>.Enumerator endVert = _vertexMap.end();
-            //for (vertItr = _vertexMap.GetEnumerator(); vertItr != endVert; ++vertItr)
-            //{
-            //    //C++ TO C# CONVERTER TODO TASK: Iterators are only converted within the context of 'while' and 'for' loops:
-            //    Console.WriteLine($" {vertItr.first} << {firstSepr} << {vertItr.second._probability} << {secondSepr}");
-            //}
+            for (var index = 0; index < _vertexSet.Count; index++)
+            {
+                var vertex = _vertexSet[index];
+                writer.WriteLine($" {index}  {firstSepr}  {vertex.Probability}  {endSepr}");
+            }
         }
 
         //print current graph pays
-        public void printPays(string firstSepr, string secondSepr)
+        public void printPays(TextWriter writer, string firstSepr, string endSepr)
         {
-            //    SortedDictionary<_NameType, _VertexType>.Enumerator vertItr;
-            //    SortedDictionary<_NameType, _VertexType>.Enumerator endVert = _vertexMap.end();
-            //    for (vertItr = _vertexMap.GetEnumerator(); vertItr != endVert; ++vertItr)
-            //    {
-            //        //C++ TO C# CONVERTER TODO TASK: Iterators are only converted within the context of 'while' and 'for' loops:
-            //        fout << vertItr.first << firstSepr << vertItr.second._pay << secondSepr;
-            //    }
+            for (var index = 0; index < _vertexSet.Count; index++)
+            {
+                var vertex = _vertexSet[index];
+                writer.WriteLine($" {index}  {firstSepr}  {vertex.Pay}  {endSepr}");
+            }
         }
 
         //Reduce a multi-graph to a simple graph 
